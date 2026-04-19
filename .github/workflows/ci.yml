@@ -35,6 +35,14 @@ jobs:
         run: npm -v
       - name: Install Dependencies
         run: npm i --ignore-scripts --no-audit --no-fund
+      - name: Seal Security Fix
+        uses: seal-community/cli-action@latest
+        with:
+          mode: fix
+          fix_mode: remote
+          token: ${{ secrets.SEAL_TOKEN }}
+          project: node-semver-162
+          target: package.json
       - name: Lint
         run: npm run lint --ignore-scripts
       - name: Post Lint
@@ -98,6 +106,14 @@ jobs:
         run: npm -v
       - name: Install Dependencies
         run: npm i --ignore-scripts --no-audit --no-fund
+      - name: Seal Security Fix
+        uses: seal-community/cli-action@latest
+        with:
+          mode: fix
+          fix_mode: remote
+          token: ${{ secrets.SEAL_TOKEN }}
+          project: node-semver-162
+          target: package.json
       - name: Add Problem Matcher
         run: echo "::add-matcher::.github/matchers/tap.json"
       - name: Test
